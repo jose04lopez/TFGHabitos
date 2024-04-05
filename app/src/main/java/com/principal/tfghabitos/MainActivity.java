@@ -1,6 +1,7 @@
 package com.principal.tfghabitos;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
@@ -15,7 +16,9 @@ public class MainActivity extends AppCompatActivity {
     private CalendarView calendarView;
     private Spinner spinnerFilter;
     private RecyclerView habitsRecyclerView;
-    private ImageButton btnToday, btnAdd, btnStatistics;
+    private ImageButton btnToday, btnAdd, btnStatistics, btnSettings, btnDarknight;
+    private View rootView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         calendarView = findViewById(R.id.calendarView);
         spinnerFilter = findViewById(R.id.spinnerFilter);
         habitsRecyclerView = findViewById(R.id.habitsRecyclerView);
+        btnSettings = findViewById(R.id.btnSettings);
+        btnDarknight = findViewById(R.id.btnDarknight);
 
         // Referencias a los botones de la barra inferior
         btnToday = findViewById(R.id.btnToday);
@@ -61,7 +66,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Abrir la nueva pantalla (Activity de configuración)
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Establecer el clic del botón
+        btnDarknight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Llamar al método para cambiar el color de fondo
+                changeBackgroundColor();
+            }
+        });
+
         // Aquí debes implementar la lógica para cargar los hábitos en el RecyclerView
         // según el filtro seleccionado y la fecha del calendario.
+    }
+
+    private void changeBackgroundColor() {
+        // Cambiar el color de fondo de la vista raíz
+        rootView.setBackgroundColor(Color.parseColor("#2c3e50")); // Puedes cambiar el color a tu preferencia
     }
 }
