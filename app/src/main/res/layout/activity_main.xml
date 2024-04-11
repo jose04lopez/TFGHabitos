@@ -33,12 +33,15 @@
         android:layout_marginBottom="60dp" />
 
     <!-- Fondo gris para los botones inferiores -->
+
+    <!-- Botones superiores -->
     <LinearLayout
         android:id="@+id/bottomButtonsLayout"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_alignParentBottom="true"
-        android:background="#CCCCCC"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/background_curved_top"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -86,7 +89,6 @@
 
     </LinearLayout>
 
-    <!-- Botones superiores -->
     <ImageButton
         android:id="@+id/btnSettings"
         android:layout_width="35dp"
