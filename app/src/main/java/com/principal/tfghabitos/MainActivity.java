@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnToday, btnAdd, btnStatistics, btnSettings, btnDarknight;
     private View rootView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
