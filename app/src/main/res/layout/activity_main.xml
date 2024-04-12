@@ -9,7 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="45dp" />
+        android:theme="@style/CalenderViewCustom"
+        android:layout_marginTop="45dp"/>
+
 
     <Spinner
         android:id="@+id/spinnerFilter"
@@ -86,7 +88,8 @@
             android:maxWidth="48dp"
             android:maxHeight="48dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_statistics" />
+            android:src="@drawable/ic_statistics"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 
