@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:theme="@style/CalenderViewCustom"
+        android:dateTextAppearance="@style/CalenderViewWeekCustomText"
         android:layout_marginTop="45dp"/>
 
 
