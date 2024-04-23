@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView habitsRecyclerView;
     private ImageButton btnToday, btnAdd, btnStatistics, btnSettings, btnDarknight;
     private View rootView;
+    private boolean isDarkMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +26,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         calendarView = findViewById(R.id.calendarView);
+        calendarView.setWeekDayTextAppearance(R.style.CalenderViewWeekCustomText);
+        
         spinnerFilter = findViewById(R.id.spinnerFilter);
         habitsRecyclerView = findViewById(R.id.habitsRecyclerView);
         btnSettings = findViewById(R.id.btnSettings);
         btnDarknight = findViewById(R.id.btnDarknight);
+
+        rootView = findViewById(android.R.id.content);
 
         // Referencias a los botones de la barra inferior
         btnToday = findViewById(R.id.btnToday);
@@ -44,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 calendarView.setDate(System.currentTimeMillis(), true, true);
             }
         });
+
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,21 +81,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Establecer el clic del botón
         btnDarknight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Llamar al método para cambiar el color de fondo
-                changeBackgroundColor();
+                toggleDarkMode();
             }
         });
 
-        // Aquí debes implementar la lógica para cargar los hábitos en el RecyclerView
-        // según el filtro seleccionado y la fecha del calendario.
     }
 
-    private void changeBackgroundColor() {
-        // Cambiar el color de fondo de la vista raíz
-        rootView.setBackgroundColor(Color.parseColor("#2c3e50")); // Puedes cambiar el color a tu preferencia
+
+
+
+    private void toggleDarkMode() {
+        isDarkMode = !isDarkMode;
+        if (isDarkMode) {
+            setDarkModeColors();
+        } else {
+            restoreOriginalColors();
+        }
+    }
+
+    private void setDarkModeColors() {
+        // Cambiar los colores a modo oscuro
+        rootView.setBackgroundColor(Color.parseColor("#333333")); // Cambia el color de fondo a tu preferencia
+        // Puedes cambiar los colores de otros elementos de la interfaz aquí
+        calendarView.setWeekDayTextAppearance(R.style.CalenderViewCustomPrueba);
+        calendarView.invalidate();
+    }
+
+    private void restoreOriginalColors() {
+        // Restaurar los colores originales
+        rootView.setBackgroundColor(Color.WHITE); // Cambia el color de fondo a tu preferencia
+        // Puedes restaurar los colores de otros elementos de la interfaz aquí
     }
 }
